@@ -1,0 +1,14 @@
+file_format: "1"
+id: viterbi
+name: Viterbi
+type: shield
+url: https://keeb.io/collections/frontpage/products/viterbi-keyboard-pcbs-5x7-70-split-ortholinear
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - encoder
+siblings:
+  - viterbi_left
+  - viterbi_right
