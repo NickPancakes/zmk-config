@@ -6,6 +6,12 @@ if SHIELD_VITERBI_LEFT
 config ZMK_KEYBOARD_NAME
     default "Viterbi"
 
+config USB_DEVICE_PRODUCT
+	default "Viterbi USB"
+
+config BT_DEVICE_NAME
+	default "Viterbi BT"
+
 config ZMK_SPLIT_BLE_ROLE_CENTRAL
     default y
 
