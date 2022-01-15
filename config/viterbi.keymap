@@ -31,7 +31,7 @@
      &kp TAB     &kp Q     &kp W       &kp E      &kp R      &kp T      &kp Y         &kp Y       &kp U      &kp I      &kp O      &kp P      &kp LBKT   &kp RBKT
      &kp BSPC    &kp A     &kp S       &kp D      &kp F      &kp G      &kp H         &kp H       &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp RET
      &kp LSHFT   &kp Z     &kp X       &kp C      &kp V      &kp B      &kp N         &kp N       &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp BSLH   &kp RSHFT
-     &kp LCTRL   &mo LOWER &mo RAISE   &kp LGUI   &kp LALT   &kp SPACE  &kp SPACE     &kp SPACE   &kp SPACE  &kp RALT   &kp RGUI   &mo LOWER  &kp RCTRL  &kp EQUAL
+     &kp LCTRL   &mo LOWER &mo RAISE   &kp LGUI   &kp LALT   &kp SPACE  &kp SPACE     &kp SPACE   &kp SPACE  &kp RALT   &kp RGUI   &mo RAISE  &kp RCTRL  &kp EQUAL
                      >;
               };
               lower_layer {
@@ -51,19 +51,19 @@
                      >;
               };
               raise_layer {
- // -------------------------------------------------------------------------------------------         -------------------------------------------------------------------------------------
- // | BT CLR   | BTSEL0      | BTSEL1      | BTSEL2      | BTSEL3      | BTSEL4     |         |         |        |         |            |         |               |               |         |
- // |          |             |             |             |             | EP_TOG     | OUT_TOG |         | EP_TOG | OUT_TOG |            |         |               |               |         |
- // |          |             |             |             |             | EP_ON      | OUT_USB |         | EP_ON  | OUT_USB |            |         |               |               |         |
- // |          |             |             |             | RESET       | EP_OFF     | OUT_BLE |         | EP_OFF | OUT_BLE |            |         | RGB BRI-      | RGB BRI+      | RGB TOG |
- // |          |             |             |             |             |            |         |         |        |         |            |         |               |               |         |
- // -------------------------------------------------------------------------------------------         -------------------------------------------------------------------------------------
+ // -------------------------------------------------------------------------------------------         ----------------------------------------------------------------------
+ // | BT CLR   | BTSEL0      | BTSEL1      | BTSEL2      | BTSEL3      | BTSEL4     |         |         |        |         |         |         |         |         |         |
+ // |          |             |             |             |             | EP_TOG     | OUT_TOG |         | EP_TOG | OUT_TOG |         |         |         |         |         |
+ // |          |             |             |             |             | EP_ON      | OUT_USB |         | EP_ON  | OUT_USB |         |         |         |         |         |
+ // |          |             |             |             | RESET       | EP_OFF     | OUT_BLE |         | EP_OFF | OUT_BLE |  RESET  |         |         |         |         |
+ // |          |             |             |             |             |            |         |         |        |         |         |         |         |         |         |
+ // -------------------------------------------------------------------------------------------         ----------------------------------------------------------------------
                      bindings = <
-     &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans         &trans            &trans       &trans       &trans    &trans          &trans          &trans
-     &trans     &trans        &trans        &trans        &trans        &ext_power EP_TOG &out OUT_TOG   &ext_power EP_TOG &out OUT_TOG &trans       &trans    &trans          &trans          &trans
-     &trans     &trans        &trans        &trans        &trans        &ext_power EP_ON  &out OUT_USB   &ext_power EP_ON  &out OUT_USB &trans       &trans    &trans          &trans          &trans
-     &trans     &trans        &trans        &trans        &reset        &ext_power EP_OFF &out OUT_BLE   &ext_power EP_OFF &out OUT_BLE &trans       &trans    &rgb_ug RGB_BRD &rgb_ug RGB_BRI &rgb_ug RGB_TOG
-     &trans     &trans        &trans        &trans        &trans        &trans            &trans         &trans            &trans       &trans       &trans    &trans          &trans          &trans
+     &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans         &trans            &trans       &trans &trans &trans &trans &trans
+     &trans     &trans        &trans        &trans        &trans        &ext_power EP_TOG &out OUT_TOG   &ext_power EP_TOG &out OUT_TOG &trans &trans &trans &trans &trans
+     &trans     &trans        &trans        &trans        &trans        &ext_power EP_ON  &out OUT_USB   &ext_power EP_ON  &out OUT_USB &trans &trans &trans &trans &trans
+     &trans     &trans        &trans        &trans        &reset        &ext_power EP_OFF &out OUT_BLE   &ext_power EP_OFF &out OUT_BLE &reset &trans &trans &trans &trans
+     &trans     &trans        &trans        &trans        &trans        &trans            &trans         &trans            &trans       &trans &trans &trans &trans &trans
                      >;
               };
        };
