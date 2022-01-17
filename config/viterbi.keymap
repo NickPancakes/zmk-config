@@ -1,70 +1,73 @@
 /*
- * Copyright (c) 2021 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+* Copyright (c) 2021 The ZMK Contributors
+*
+* SPDX-License-Identifier: MIT
+*/
 
- #include <behaviors.dtsi>
- #include <dt-bindings/zmk/keys.h>
- #include <dt-bindings/zmk/bt.h>
- #include <dt-bindings/zmk/rgb.h>
- #include <dt-bindings/zmk/ext_power.h>
- #include <dt-bindings/zmk/outputs.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
 
 #define DEFAULT 0
 #define LOWER	1
 #define RAISE	2
 / {
-       keymap {
-              compatible = "zmk,keymap";
- 
-              default_layer {
- // ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
- // | ESC      |    1     |    2     |    3     |    4     |     5    |     6    |   |    6     |     7    |     8    |     9    |     0    |    -     |   BSPC   |
- // | TAB      |    Q     |    W     |    E     |    R     |     T    |     Y    |   |    Y     |     U    |     I    |     O    |     P    |    [     |    ]     |
- // | BSPC     |    A     |    S     |    D     |    F     |     G    |     H    |   |    H     |     J    |     K    |     L    |     ;    |    '     |   RET    |
- // | LSHIFT   |    Z     |    X     |    C     |    V     |     B    |     N    |   |    N     |     M    |     ,    |     .    |     /    |    \     |  RSHIFT  |
- // | LCTRL    |  LOWER   |  RAISE   |  LGUI    |   LALT   |   SPACE  |   SPACE  |   |  SPACE   |  SPACE   |   RALT   |  LOWER   |   RAISE  |   RCTRL  |    =     |
- // ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
-                     bindings = <
-     &kp ESC     &kp N1    &kp N2      &kp N3     &kp N4     &kp N5     &kp N6        &kp N6      &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS  &kp BSPC
-     &kp TAB     &kp Q     &kp W       &kp E      &kp R      &kp T      &kp Y         &kp Y       &kp U      &kp I      &kp O      &kp P      &kp LBKT   &kp RBKT
-     &kp BSPC    &kp A     &kp S       &kp D      &kp F      &kp G      &kp H         &kp H       &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp RET
-     &kp LSHFT   &kp Z     &kp X       &kp C      &kp V      &kp B      &kp N         &kp N       &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp BSLH   &kp RSHFT
-     &kp LCTRL   &mo LOWER &mo RAISE   &kp LGUI   &kp LALT   &kp SPACE  &kp SPACE     &kp SPACE   &kp SPACE  &kp RALT   &mo LOWER  &mo RAISE  &kp RCTRL  &kp EQUAL
-                     >;
-              };
-              lower_layer {
- // ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
- // | `        |    F1    |    F2    |    F3    |    F4    |     F5   |     F6   |   |    F6    |     F7   |     F8   |     F9   |    F10   |   F11    |    F12   |
- // |          |          |          |          |          |          |          |   |          |          |          |          |          |  PRNTSCR |    INS   |
- // |          |          |          |          |          |          |          |   |          |          |          |          |          |          |   PGUP   |
- // |          |          |          |          |          |          |          |   |          |          |          |          |          |    UP    |   PGDN   |
- // |          |          |          |          |          |          |          |   |          |          |          |          |   LEFT   |   DOWN   |   RIGHT  |
- // ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
-                     bindings = <
-     &kp GRAVE   &kp F1      &kp F2     &kp F3    &kp F4      &kp F5    &kp F6         &kp F6      &kp F7     &kp F8    &kp F9     &kp F10    &kp F11    &kp F12
-     &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &trans     &kp INS
-     &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &trans     &kp PG_UP
-     &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &kp UP     &kp PG_DN
-     &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &kp LEFT   &kp DOWN   &kp RIGHT
-                     >;
-              };
-              raise_layer {
- // -------------------------------------------------------------------------------------------         ----------------------------------------------------------------------
- // | BT CLR   | BTSEL0      | BTSEL1      | BTSEL2      | BTSEL3      | BTSEL4     |         |         |        |         |         |         |         |         |         |
- // |          |             |             |             |             | EP_TOG     | OUT_TOG |         | EP_TOG | OUT_TOG |         |         |         |         |         |
- // |          |             |             |             |             | EP_ON      | OUT_USB |         | EP_ON  | OUT_USB |         |         |         |         |         |
- // |          |             |             |             | RESET       | EP_OFF     | OUT_BLE |         | EP_OFF | OUT_BLE |  RESET  |         |         |         |         |
- // |          |             |             |             |             |            |         |         |        |         |         |         |         |         |         |
- // -------------------------------------------------------------------------------------------         ----------------------------------------------------------------------
-                     bindings = <
-     &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4      &trans         &trans            &trans       &trans &trans &trans &trans &trans
-     &trans     &trans        &trans        &trans        &trans        &ext_power EP_TOG &out OUT_TOG   &ext_power EP_TOG &out OUT_TOG &trans &trans &trans &trans &trans
-     &trans     &trans        &trans        &trans        &trans        &ext_power EP_ON  &out OUT_USB   &ext_power EP_ON  &out OUT_USB &trans &trans &trans &trans &trans
-     &trans     &trans        &trans        &trans        &reset        &ext_power EP_OFF &out OUT_BLE   &ext_power EP_OFF &out OUT_BLE &reset &trans &trans &trans &trans
-     &trans     &trans        &trans        &trans        &trans        &trans            &trans         &trans            &trans       &trans &trans &trans &trans &trans
-                     >;
-              };
-       };
+  keymap {
+    compatible = "zmk,keymap";
+
+    default_layer {
+// ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
+// | ESC      |    1     |    2     |    3     |    4     |     5    |     6    |   |    6     |     7    |     8    |     9    |     0    |    -     |   BSPC   |
+// | TAB      |    Q     |    W     |    E     |    R     |     T    |     Y    |   |    Y     |     U    |     I    |     O    |     P    |    [     |    ]     |
+// | BSPC     |    A     |    S     |    D     |    F     |     G    |     H    |   |    H     |     J    |     K    |     L    |     ;    |    '     |   RET    |
+// | LSHIFT   |    Z     |    X     |    C     |    V     |     B    |     N    |   |    N     |     M    |     ,    |     .    |     /    |    \     |  RSHIFT  |
+// | LCTRL    |  LOWER   |  RAISE   |  LGUI    |   LALT   |   SPACE  |   SPACE  |   |  SPACE   |  SPACE   |   RALT   |  LOWER   |   RAISE  |   RCTRL  |    =     |
+// ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
+      bindings = <
+    &kp ESC     &kp N1    &kp N2      &kp N3     &kp N4     &kp N5     &kp N6        &kp N6      &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS  &kp BSPC
+    &kp TAB     &kp Q     &kp W       &kp E      &kp R      &kp T      &kp Y         &kp Y       &kp U      &kp I      &kp O      &kp P      &kp LBKT   &kp RBKT
+    &kp BSPC    &kp A     &kp S       &kp D      &kp F      &kp G      &kp H         &kp H       &kp J      &kp K      &kp L      &kp SEMI   &kp SQT    &kp RET
+    &kp LSHFT   &kp Z     &kp X       &kp C      &kp V      &kp B      &kp N         &kp N       &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp BSLH   &kp RSHFT
+    &kp LCTRL   &mo LOWER &mo RAISE   &kp LGUI   &kp LALT   &kp SPACE  &kp SPACE     &kp SPACE   &kp SPACE  &kp RALT   &mo LOWER  &mo RAISE  &kp RCTRL  &kp EQUAL
+      >;
+    };
+
+    lower_layer {
+// ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
+// | `        |    F1    |    F2    |    F3    |    F4    |     F5   |    F6    |   |    F6    |    F7    |    F8    |    F9    |    F10   |   F11    |    F12   |
+// |          |          |          |          |          |          |          |   |          |          |          |          |          |  PRNTSCR |    INS   |
+// |          |          |          |          |          |          |          |   |          |          |          |          |          |          |   PGUP   |
+// |          |          |          |          |          |          |          |   |          |          |          |          |          |    UP    |   PGDN   |
+// |          |          |          |          |          |          |          |   |          |          |          |          |   LEFT   |   DOWN   |   RIGHT  |
+// ------------------------------------------------------------------------------   ------------------------------------------------------------------------------
+      bindings = <
+    &kp GRAVE   &kp F1      &kp F2     &kp F3    &kp F4      &kp F5    &kp F6         &kp F6      &kp F7     &kp F8    &kp F9     &kp F10    &kp F11    &kp F12
+    &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &trans     &kp INS
+    &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &trans     &kp PG_UP
+    &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &trans     &kp UP     &kp PG_DN
+    &trans      &trans      &trans     &trans    &trans      &trans    &trans         &trans      &trans    &trans     &trans     &kp LEFT   &kp DOWN   &kp RIGHT
+      >;
+    };
+
+    raise_layer {
+// -------------------------------------------------------------------------------------------------------------------------------   -------------------------------------------------------------------------------------------------------------------------------
+// |    BT Clear     |  BT Profile 0   |  BT Profile 1   |  BT Profile 2   |  BT Profile 3   |  BT Profile 4   | BT Next Profile |   |    BT Clear     |  BT Profile 0   |  BT Profile 1   |  BT Profile 2   |  BT Profile 3   |  BT Profile 4   | BT Next Profile |
+// |   RGB Toggle    |    RGB Hue +    |    RGB Sat +    |    RGB Bri +    |    RGB Spd +    | RGB Next Effect | BT Prev Profile |   |   RGB Toggle    |    RGB Hue +    |    RGB Sat +    |    RGB Bri +    |    RGB Spd +    | RGB Next Effect | BT Prev Profile |
+// |  Ext Pwr Toggle |    RGB Hue -    |    RGB Sat -    |    RGB Bri -    |    RGB Spd -    | RGB Prev Effect |      Reset      |   |  Ext Pwr Toggle |    RGB Hue -    |    RGB Sat -    |    RGB Bri -    |    RGB Spd -    | RGB Prev Effect |      Reset      |
+// |   Out Toggle    |     Out USB     |     Out BT      |   Ext Pwr On    |   Ext Pwr Off   |                 |   Bootloader    |   |   Out Toggle    |     Out USB     |     Out BT      |   Ext Pwr On    |   Ext Pwr Off   |                 |   Bootloader    |
+// |                 |                 |                 |                 |                 |                 |                 |   |                 |                 |                 |                 |                 |                 |                 |
+// -------------------------------------------------------------------------------------------------------------------------------   -------------------------------------------------------------------------------------------------------------------------------
+      bindings = <
+    &bt BT_CLR        &bt BT_SEL 0      &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3      &bt BT_SEL 4      &bt BT_NXT            &bt BT_CLR        &bt BT_SEL 0      &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3      &bt BT_SEL 4      &bt BT_NXT
+    &rgb_ug RGB_TOG   &rgb_ug RGB_HUI   &rgb_ug RGB_SAI   &rgb_ug RGB_BRI   &rgb_ug RGB_SPI   &rgb_ug RGB_EFF   &bt BT_PRV            &rgb_ug RGB_TOG   &rgb_ug RGB_HUI   &rgb_ug RGB_SAI   &rgb_ug RGB_BRI   &rgb_ug RGB_SPI   &rgb_ug RGB_EFF   &bt BT_PRV
+    &ext_power EP_TOG &rgb_ug RGB_HUD   &rgb_ug RGB_SAD   &rgb_ug RGB_BRD   &rgb_ug RGB_SPD   &rgb_ug RGB_EFR   &reset                &ext_power EP_TOG &rgb_ug RGB_HUD   &rgb_ug RGB_SAD   &rgb_ug RGB_BRD   &rgb_ug RGB_SPD   &rgb_ug RGB_EFR   &reset
+    &out OUT_TOG      &out OUT_USB      &out OUT_BLE      &ext_power EP_ON  &ext_power EP_OFF &trans            &bootloader           &out OUT_TOG      &out OUT_USB      &out OUT_BLE      &ext_power EP_ON  &ext_power EP_OFF &trans            &bootloader
+    &trans            &trans            &trans            &trans            &trans            &trans            &trans                &trans            &trans            &trans            &trans            &trans            &trans            &trans
+      >;
+    };
+
+  };
 };
