@@ -4,7 +4,6 @@ name: Viterbi Rev. 2
 type: shield
 url: https://keeb.io/collections/frontpage/products/viterbi-keyboard-pcbs-5x7-70-split-ortholinear
 requires: [pro_micro]
-exposes: [i2c_oled]
 features:
   - keys
 siblings:
