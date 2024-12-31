@@ -165,7 +165,6 @@
 
     keypad_position_map {
         compatible = "zmk,physical-layout-position-map";
-        complete;
 
         map_all_1u: all_1u {
             physical-layout = <&layout_all_1u>;
