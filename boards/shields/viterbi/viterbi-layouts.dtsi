@@ -4,6 +4,7 @@
     chosen {
         zmk,physical-layout = &layout_2u_spaces;
     };
+    
 
     layout_all_1u: physical_layout_0 {
         compatible = "zmk,physical-layout";
@@ -165,6 +166,7 @@
 
     keypad_position_map {
         compatible = "zmk,physical-layout-position-map";
+        complete;
 
         map_all_1u: all_1u {
             physical-layout = <&layout_all_1u>;
